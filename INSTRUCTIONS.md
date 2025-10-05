@@ -55,11 +55,11 @@ This is the most important step to make your application secure and functional. 
 
 ---
 
-## Part 2: Uploading Your Project to GitHub
+## Part 2 (Recommended): Connecting to GitHub From the Editor
 
-GitHub is a service that will store your application's code. Netlify will connect to it to build and deploy your website.
+This is the modern, automated way to get your code onto GitHub. It's easier and better than dragging files manually.
 
-### Step 2.1: Create a GitHub Account and Repository
+### Step 2.1: Create an Empty GitHub Repository
 
 1.  Go to [github.com](https://github.com) and sign up for a free account if you don't have one.
 2.  Once logged in, click the **"+"** icon in the top-right corner, and select **"New repository"**.
@@ -67,18 +67,24 @@ GitHub is a service that will store your application's code. Netlify will connec
 4.  Make sure the repository is set to **Public**.
 5.  **Do not** check any boxes like "Add a README file". We want it to be completely empty.
 6.  Click **"Create repository"**.
+7.  On the new repository page, click the **"Code"** button and copy the **HTTPS** URL. It will look like `https://github.com/your-username/your-repo-name.git`.
 
-### Step 2.2: Upload Your Project Files (No Command Line!)
+### Step 2.2: Connect Your Editor to GitHub
 
-You will now be on the main page for your new, empty repository.
+1.  In this code editor, find the **Source Control** icon on the left-hand side (it looks like a branching fork). Click it.
+2.  You should see a button that says **"Initialize Repository"**. Click it. The editor will now track all your project files.
+3.  In the Source Control panel, look for a "..." (More Actions) menu. Click it, then go to **Remote > Add Remote**.
+4.  A box will appear. **Paste the HTTPS URL** you copied from GitHub into this box and press Enter.
+5.  Another box will ask for a remote name. Type `origin` and press Enter.
 
-1.  Look for the link that says **"uploading an existing file"** and click it.
-2.  This will open a page with a box that says "Drag files here to add them to your repository".
-3.  Open your project folder on your computer. Select **ALL** the files and folders **EXCEPT** for `node_modules`.
-4.  **Drag and drop** all of these selected files and folders into the box in your browser.
-5.  Wait for all the files to finish uploading. You will see a list of all the files.
-6.  At the bottom of the page, in the "Commit changes" box, type a short message like `Initial commit`.
-7.  Click the green **"Commit changes"** button.
+### Step 2.3: Push Your Code to GitHub
+
+1.  You will see a list of all your project files under "Changes".
+2.  Above the list, there is a "Message" box. Type a short message, like `Initial commit`.
+3.  Click the **"Commit"** button (it might be a checkmark icon).
+4.  Now, click the **"Sync Changes"** or **"Push"** button to upload all your committed files to GitHub. You may be asked to log in to your GitHub account to authorize the editor.
+
+**Verification:** Go back to your GitHub repository page in your browser and refresh. You should see all your code, including the `src` folder, neatly organized.
 
 **Congratulations! Your code is now safely stored on GitHub.**
 

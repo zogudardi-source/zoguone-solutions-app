@@ -1,10 +1,14 @@
+// Fix: Added a triple-slash directive to include Vite's client types, which provides the necessary type definitions for `import.meta.env`.
+/// <reference types="vite/client" />
+
 import { GoogleGenAI } from "@google/genai";
 import { Message } from '../types';
 
-// Fix: Adhering to Gemini API guidelines.
-// The API key is now exclusively sourced from the `process.env.API_KEY` environment variable.
-// The previous implementation with a hardcoded constant has been removed.
-const ai = process.env.API_KEY ? new GoogleGenAI({ apiKey: process.env.API_KEY }) : null;
+// Securely get the Gemini API Key from environment variables.
+// Vite requires environment variables exposed to the client to be prefixed with `VITE_`.
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+
+const ai = GEMINI_API_KEY ? new GoogleGenAI({ apiKey: GEMINI_API_KEY }) : null;
 
 // This flag is used by the UI to show a friendly configuration message.
 export const isGeminiConfigured = !!ai;
@@ -27,8 +31,7 @@ Your tone should be helpful, clear, and concise. Answer questions based ONLY on 
 export const askChatbot = async (prompt: string, history: Message[]) => {
   // If the AI client isn't configured, return a helpful message.
   if (!ai) {
-    // Fix: Updated the message to reflect the use of environment variables for configuration.
-    return "The AI assistant is not configured. An administrator needs to set the API_KEY environment variable to enable this feature.";
+    return "The AI assistant is not configured. An administrator needs to set the VITE_GEMINI_API_KEY environment variable in the deployment settings to enable this feature.";
   }
 
   try {
